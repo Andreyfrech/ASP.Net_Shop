@@ -1,4 +1,5 @@
 ﻿using ASP.NET_shop.Data.interfaces;
+using ASP.NET_shop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,8 +21,12 @@ namespace ASP.NET_shop.Controllers
 
         public ViewResult List()
         {
-            var cars = _allCars.Cars;
-            return View(cars);
+            ViewBag.Title = "Страница с автомобилями";
+            CarsListViewModel obj = new CarsListViewModel();
+            obj.getAllCars = _allCars.Cars;
+            obj.currCategory = "Автомобили"; 
+         //   var cars = _allCars.Cars;
+            return View(obj);
         }
     }
 }
